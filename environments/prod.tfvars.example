@@ -1,0 +1,16 @@
+# Target Prod placeholders
+
+genesyscloud_oauthclient_id     = "REPLACE_WITH_GENESYSCLOUD_OAUTHCLIENT_ID_PROD"
+genesyscloud_oauthclient_secret = "REPLACE_WITH_GENESYSCLOUD_OAUTHCLIENT_SECRET_PROD"
+genesyscloud_region             = "REPLACE_WITH_GENESYSCLOUD_REGION_PROD"
+
+integration_endpoint_url = "REPLACE_WITH_INTEGRATION_ENDPOINT_URL_PROD"
+integration_auth_value   = "REPLACE_WITH_INTEGRATION_AUTH_VALUE_PROD"
+
+queue_names    = ["Support", "Sales", "Billing", "General"]
+skill_names    = []
+language_names = []
+
+create_user             = false
+assign_default_userrole = false
+create_wrap_up_codes    = false

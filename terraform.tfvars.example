@@ -1,0 +1,50 @@
+# Copy this file to terraform.tfvars (or use per-environment tfvars) and replace placeholder values.
+
+genesyscloud_oauthclient_id     = "REPLACE_WITH_TARGET_ORG_OAUTH_CLIENT_ID"
+genesyscloud_oauthclient_secret = "REPLACE_WITH_TARGET_ORG_OAUTH_CLIENT_SECRET"
+genesyscloud_region             = "us-east-1"
+
+integration_endpoint_url = "REPLACE_WITH_INTEGRATION_ENDPOINT_URL"
+integration_auth_value   = "REPLACE_WITH_INTEGRATION_AUTH_VALUE"
+
+# Keep immutable naming aligned to Phase 1 mapping unless intentionally changed.
+integration_name        = "CrossOrgIntegration"
+integration_action_name = "RouteDecisionAction"
+flow_name               = "CrossOrgMainFlow"
+
+queue_names    = ["Support", "Sales", "Billing", "General"]
+skill_names    = []
+language_names = []
+
+acw_timeout_ms         = 300000
+
+# Demo-safe user scaffolding
+create_user             = false
+user_name               = "Placeholder User"
+user_email              = "placeholder.user@example.com"
+user_password           = ""
+user_department         = "Development"
+user_title              = "Agent"
+user_phone_number       = "+10000000000"
+user_employee_id        = "EMP-PLACEHOLDER"
+user_employee_type      = "Full-time"
+user_hire_date          = "2021-01-01"
+user_acd_auto_answer    = true
+assign_default_userrole = false
+
+# Wrap-up creation is disabled by default for safer migrations.
+create_wrap_up_codes = false
+wrap_up_codes = [
+  {
+    name        = "Sales"
+    description = "Placeholder wrap-up code for sales outcomes"
+  },
+  {
+    name        = "Support"
+    description = "Placeholder wrap-up code for support outcomes"
+  },
+  {
+    name        = "Escalation"
+    description = "Placeholder wrap-up code for escalated outcomes"
+  }
+]

@@ -1,0 +1,17 @@
+# Terraform local/runtime artifacts
+.terraform/
+*.tfstate
+*.tfstate.*
+crash.log
+*.tfvars
+*.auto.tfvars
+tfplan
+
+# Local exports and logs
+exports/
+
+# Local editor/runtime files
+.vscode/
+
+# Local binaries
+terraform.exe

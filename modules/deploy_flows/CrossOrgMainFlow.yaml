@@ -1,0 +1,25 @@
+inboundCall:
+  name: CrossOrgMainFlow
+  description: Placeholder inbound call flow scaffold for cross-org migration.
+  startUpRef: "/inboundCall/states/state[Initial State_1]"
+  defaultLanguage: en-us
+  supportedLanguages:
+    en-us:
+      defaultLanguageSkill:
+        noValue: true
+  settingsErrorHandling:
+    errorHandling:
+      disconnect:
+        none: true
+  states:
+    - state:
+        name: Initial State
+        refId: Initial State_1
+        variables:
+          - stringVariable:
+              name: State.TargetQueue
+              initialValue:
+                lit: General
+        actions:
+          - disconnect:
+              name: Placeholder Disconnect
