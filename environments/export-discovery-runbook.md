@@ -1,7 +1,7 @@
 # Export Discovery Runbook (Source Org)
 
 ## Purpose
-Run credential-driven source org discovery and export artifacts for cross-org migration planning.
+Run credential-driven source org export using the official Genesys Cloud Terraform provider export resource for cross-org migration planning.
 
 This workflow does not require manual source resource IDs as input. Operators provide source OAuth credentials and region/API host only.
 
@@ -51,26 +51,27 @@ Path behavior:
 - The resolved absolute export directory is printed before discovery begins.
 
 Artifacts produced:
-- flows.json
-- queues.json
-- integrations.json
-- integration_actions.json
-- routing_skills.json
-- routing_languages.json
-- wrap_up_codes.json
+- Provider-generated HCL export files (set depends on source org resources)
 - summary.json
 
-summary.json includes generation metadata, source host, file list, and per-class counts.
+summary.json includes generation metadata, resolved provider settings, export path, key export settings, and exported file list.
+
+Provider export settings used by script:
+- export_format = hcl
+- include_state_file = false
+- log_permission_errors = true
+- enable_dependency_resolution = true
+- use_legacy_architect_flow_exporter = false
 
 ## How Artifacts Feed Migration Planning
-1. Use artifact files as the source of truth to update inventory and dependency mapping in migration-manifest.md.
+1. Use provider-generated HCL files as the source of truth to update inventory and dependency mapping in migration-manifest.md.
 2. Generate environment-specific substitutions from exported names/properties, not from manually entered source IDs.
-3. Confirm Phase 3 pre-deploy readiness in implementation-plan.md using the generated summary and resource counts.
+3. Confirm Phase 3 pre-deploy readiness in implementation-plan.md using the generated summary and exported artifacts.
 
 ## Security Notes
 - Do not commit secrets, tokens, or credential exports.
 - Do not paste client secret values into logs or issue comments.
-- The script does not print OAuth bearer tokens.
+- The script does not print OAuth secrets or tokens.
 - Keep source credentials in secure env vars, secret stores, or CI secret managers.
 
 ## Verification Note

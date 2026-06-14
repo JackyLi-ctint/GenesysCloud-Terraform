@@ -160,9 +160,9 @@ Baseline acceptance criteria per iteration:
 - Source and target region/API host values
 
 2. Prepare target dev variable set:
-- Run source export/discovery to collect resources and dependency graph.
-- Command reference: `./scripts/export-discovery.ps1 -SourceOAuthClientId "<source-client-id>" -SourceOAuthClientSecret "<source-client-secret>" -SourceRegion "<source-region-or-api-host>"`
-- Generate migration artifacts from export outputs (no manual resource-ID entry).
+- Run source export/discovery using provider-aligned export to collect resources and dependency graph.
+- Command reference (provider export alignment): `./scripts/export-discovery.ps1 -SourceOAuthClientId "<source-client-id>" -SourceOAuthClientSecret "<source-client-secret>" -SourceRegion "<source-region-or-api-host>"`
+- Generate migration artifacts from provider export outputs (no manual resource-ID entry).
 
 3. Run Phase 3 pre-deploy checks in target dev workspace:
 - terraform fmt -recursive
