@@ -164,6 +164,12 @@ Baseline acceptance criteria per iteration:
 - Command reference (provider export alignment): `./scripts/export-discovery.ps1 -SourceOAuthClientId "<source-client-id>" -SourceOAuthClientSecret "<source-client-secret>" -SourceRegion "<source-region-or-api-host>"`
 - Generate migration artifacts from provider export outputs (no manual resource-ID entry).
 
+### Current Credential Execution Model (Flexibility Preserved)
+- Source export/discovery runs through `scripts/export-discovery.ps1` and accepts credentials from script parameters or environment variables (local shell or CI runner).
+- Target Terraform plan/apply runs in Terraform Cloud and reads destination credentials from workspace Terraform variables.
+- This hybrid model is intentionally retained for now to preserve operational flexibility across local debugging, CI runs, and Terraform Cloud deployments.
+- If future operations standardize fully on Terraform Cloud run contexts, source-export credentials can be moved to workspace environment variables without changing migration semantics.
+
 3. Run Phase 3 pre-deploy checks in target dev workspace:
 - terraform fmt -recursive
 - terraform init
@@ -182,3 +188,4 @@ Baseline acceptance criteria per iteration:
 ### Input Policy
 - Users provide credentials and environment endpoints, not individual resource IDs.
 - Resource mapping is produced from automated source export/discovery artifacts.
+- Current implementation note: source credentials are consumed by export script input/env vars, while destination credentials are consumed by Terraform workspace variables.
